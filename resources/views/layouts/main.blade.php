@@ -1,15 +1,13 @@
 <!doctype html>
 <html lang="{{ LaravelLocalization::getCurrentLocale() }}"
-    dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
+    dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}" class="color-sidebar sidebarcolor3 color-header headercolor5">
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Roboto:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
-
     <link href="{{ asset('main/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
     <link href="{{ asset('main/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
     <link href="{{ asset('main/plugins/highcharts/css/highcharts.css') }}" rel="stylesheet" />
@@ -31,7 +29,7 @@
     <link rel="stylesheet"
         href="{{ asset('main/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('main/css/header-colors.css') }}" />
-
+    <link rel="icon" href="{{ asset('main/images/favicon-32x32.png') }}" type="image/png">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @if (LaravelLocalization::getCurrentLocale() == 'en')

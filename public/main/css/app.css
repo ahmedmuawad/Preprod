@@ -1,18 +1,7 @@
 
 
 
-body {
-
-	font-size: 14px;
-	color: #525f7f;
-    background-color: #f8f9fe;
-	letter-spacing: 0px;
-    overflow-x: hidden;
-
-    font-family: 'Cairo', sans-serif;
-
-
-}
+body {font-size: 14px;color: #525f7f;background-color: #f8f9fe;letter-spacing: 0px;overflow-x: hidden;font-family: 'Cairo', sans-serif;}
 
 
 a {

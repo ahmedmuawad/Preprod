@@ -15,7 +15,6 @@
 
 
 
-
 <style>
     th,
     td,
@@ -547,14 +546,13 @@
                                                 <div class="border border-3 p-4 rounded">
                                                     <div class="mb-3">
                                                         <label for="inputProductTitle" class="form-label">@lang("site.Line Item")</label>
-
-                                                            <input list="itemCode" class="form-control form-control-sm form-select"placeholder="@lang("site.chooseItem")">
-                                                            <datalist name="itemCode[]" id="itemCode" >
-                                                            @foreach ($products as $product)
-                                                                <option value="{{ $product['itemCode'] }}" style="font-size: 20px">
-                                                                    {{ $product['itemCode'] }} - {{ $product['codeNameSecondaryLang'] }}
+                                                        <select name="itemCode[]" id="itemCode" class="form-control form-select" placeholder="@lang("site.chooseItem")">
+                                                                @foreach ($products as $product)
+                                                                <option value="{{ $product['itemCode'] }}"
+                                                                    style="font-size: 20px">
+                                                                    {{ $product['codeNameSecondaryLang'] }}
                                                             @endforeach
-                                                        </datalist>
+                                                        </select>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="inputProductDescription"
@@ -829,15 +827,15 @@
                                <div class="border border-3 p-4 rounded">
                                 <div class="mb-3">
                                     <label for="inputProductTitle" class="form-label">@lang("site.Line Item")</label>
-                                    <input list="itemCode" class="form-control form-control-sm form-select"placeholder="@lang("site.chooseItem")">
-                                    <datalist name="itemCode[]" id="itemCode">
-                                    @foreach ($products as $product)
-                                        <option value="{{ $product['itemCode'] }}"
-                                            style="font-size: 20px">
-                                            {{ $product['itemCode'] }} - {{ $product['codeNameSecondaryLang'] }}
-                                    @endforeach
-                                </datalist>
-                                </div>
+                                                        <select name="itemCode[]" id="itemCode" class="form-control form-select" placeholder="@lang("site.chooseItem")">
+                                                                @foreach ($products as $product)
+                                                                <option value="{{ $product['itemCode'] }}"
+                                                                    style="font-size: 20px">
+                                                                    {{ $product['codeNameSecondaryLang'] }}
+                                                            @endforeach
+                                                        </select>
+
+        </div>
                                 <div class="mb-3">
                                     <label for="inputProductDescription" class="form-label">@lang("site.Line Decription") ${i}</label>
                                     <textarea name="invoiceDescription[]" class="form-control" id="inputProductDescription" rows="2"></textarea>

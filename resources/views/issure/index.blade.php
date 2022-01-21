@@ -30,7 +30,7 @@
 				<div class="card">
 					<div class="card-body">
 						<div class="table-responsive">
-							<table class="table table-striped table-bordered">
+							<table id="example2" class="table table-striped table-bordered">
 								<thead>
 
                                     {{--    --}}
@@ -63,7 +63,6 @@
 										{{-- <td>{{ $issure->branchID }}</td> --}}
 										<td>0</td>
 										<td>EG</td>
-                                        <th>{{ $issure->country }}</th>
 										<td>{{ $issure->governate }}</td>
 										<td>{{ $issure->regionCity }}</td>
 										<td>{{ $issure->street }}</td>

@@ -155,11 +155,7 @@ html.headercolor4 .topbar {
 
 }
 
-html.headercolor5 .topbar {
-
-	background: #673ab7;
-
-}
+html.headercolor5 .topbar {background: #314f5a;}
 
 html.headercolor6 .topbar {
 
@@ -275,7 +271,7 @@ html.color-sidebar.sidebarcolor2 .sidebar-wrapper {
 }
 
 html.color-sidebar.sidebarcolor3 .sidebar-wrapper {
-    background-image: url(../images/bg-themes/3.png);
+    background-image: url(../../images/bg-themes/3.png);
 }
 
 html.color-sidebar.sidebarcolor4 .sidebar-wrapper {
