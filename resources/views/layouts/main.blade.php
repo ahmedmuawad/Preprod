@@ -65,7 +65,7 @@
             <!--navigation-->
             <ul class="metismenu" id="menu">
 
-
+                <li>
                 <a href="{{ url('/') }}">
                     <div class="parent-icon"><i class='bx bx-home'></i></div>
                     <div class="menu-title">@lang('site.dashboard')</div>
@@ -229,7 +229,7 @@
                                                 <a rel="alternate" hreflang="{{ $localeCode }}"
                                                     href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                                                     <img src="{{ asset('main/flags/' . $localeCode . '.svg') }}"
-                                                        width="25">
+                                                        width="22px">
                                                     {{ $properties['native'] }}
                                                 </a>
                                             </li>
