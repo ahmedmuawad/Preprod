@@ -46,16 +46,16 @@
         <!--sidebar wrapper -->
         <div class="sidebar-wrapper" data-simplebar="true">
             <div class="sidebar-header">
-                {{-- <div>
+                 <div>
                     <img src="{{ asset('images/' . $company->logo) }}" class="logo-icon" alt="logo icon">
-                </div> --}}
+                </div>
 
 
                 <div>
                     @if (LaravelLocalization::getCurrentLocale() == 'en')
-                        <h4 class="logo-text">{{ $company->name_en }}</h4>
+                    <a href="{{ url('/') }}">  <h4 class="logo-text">{{ $company->name_en }}</h4></a>
                     @else
-                        <h4 class="logo-text">{{ $company->name_ar }}</h4>
+                    <a href="{{ url('/') }}"><h4 class="logo-text">{{ $company->name_ar }}</h4></a>
                     @endif
 
                 </div>
@@ -229,7 +229,7 @@
                                                 <a rel="alternate" hreflang="{{ $localeCode }}"
                                                     href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                                                     <img src="{{ asset('main/flags/' . $localeCode . '.svg') }}"
-                                                        width="30">
+                                                        width="25">
                                                     {{ $properties['native'] }}
                                                 </a>
                                             </li>
@@ -419,9 +419,9 @@
     <script src="{{ asset('main/plugins/datetimepicker/js/picker.time.js') }}"></script>
     <script src="{{ asset('main/plugins/datetimepicker/js/picker.date.js') }}"></script>
     <script src="{{ asset('main/plugins/bootstrap-material-datetimepicker/js/moment.min.js') }}"></script>
-    <script
-        src="{{ asset('main/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.min.js') }}">
+    <script src="{{ asset('main/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.min.js') }}">
     </script>
+
     <script>
         $('.datepicker').pickadate({
                 selectMonths: true,

@@ -118,25 +118,7 @@ a {
 }
 
 
-.logo-text {
-
-
-	font-size: 22px;
-
-
-	margin-right: 5px;
-
-
-	margin-bottom: 0;
-
-
-	letter-spacing: 0px;
-
-
-	color: #8833ff;
-
-
-}
+.logo-text {margin-left: 1;font-size: 16px;margin-right: 5px;margin-left: 10px;letter-spacing: 0px;margin-right: 10px;}
 
 
 .toggle-icon {
@@ -439,38 +421,13 @@ a {
 }
 
 
-.sidebar-wrapper .metismenu a .menu-title {
+.sidebar-wrapper .metismenu a .menu-title {margin-right: 10px;margin-left: 10px;}
 
 
-	margin-right: 10px;
+.sidebar-wrapper .metismenu ul a {padding: 6px 20px 6px 21px;font-size: 15px;border: 0;}
 
 
-}
-
-
-.sidebar-wrapper .metismenu ul a {
-
-
-	padding: 6px 15px 6px 15px;
-
-
-	font-size: 15px;
-
-
-	border: 0;
-
-
-}
-
-
-.sidebar-wrapper .metismenu ul a i {
-
-
-	margin-left: 10px;
-	transform: rotate(180deg);
-
-
-}
+.sidebar-wrapper .metismenu ul a i {margin-left: 15px;transform: rotate(180deg);margin-right: 10px;}
 
 
 .sidebar-wrapper .metismenu ul {
@@ -4334,7 +4291,7 @@ input::placeholder {
 
 
 
-.topbar .navbar .navbar-nav .nav-link {padding-left: 0.8rem;padding-right: 0.8rem;color: #252323;font-size: 18px;}
+.topbar .navbar .navbar-nav .nav-link {padding-left: 0.8rem;padding-right: 0.8rem;color: #252323;font-size: 16px;}
 
 
 .dropdown-toggle-nocaret:after {
@@ -4391,25 +4348,7 @@ input::placeholder {
 }
 
 
-.user-img {
-
-
-	width: 42px;
-
-
-	height: 42px;
-
-
-	border-radius: 50%;
-
-
-	border: 0px solid #e5e5e5;
-
-
-	padding: 0px;
-
-
-}
+.user-img {width: 32px;height: 32px;border-radius: 50%;border: 0px solid #e5e5e5;padding: 0px;margin: 10px;}
 
 
 .user-info .user-name {

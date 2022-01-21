@@ -2,86 +2,124 @@
 
 
 @section('content')
-{{--  <div class="page-content">
+    <div class="page-content">
+        <div class="row row-cols-1 row-cols-lg-3">
+            <div class="col">
+                <a href="{{ route('getNotifications') }}">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <p class="mb-0">@lang('site.Notifications')</p>
+                                <h4 class="font-weight-bold">
 
-
-    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
-        <div class="col">
-            <div class="card radius-10">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <p class="mb-0 text-secondary">@lang('site.products')</p>
-                            <h4 class="my-1">{{ $products }}</h4>
-
+                                </h4>
+                            </div>
+                            <div class="widgets-icons bg-gradient-cosmic text-white"><i class='bx bx-bell'></i>
+                            </div>
                         </div>
-                        <div class="widgets-icons bg-light-success text-success ms-auto"><i class="bx bx-cube-alt"></i>
+                    </div>
+                </div></a>
+            </div>
+            <div class="col">
+                <a href="{{ route('customer.index') }}">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <p class="mb-0">@lang('site.customers')</p>
+                                <h4 class="font-weight-bold">
+
+                                </h4>
+                            </div>
+                            <div class="widgets-icons bg-gradient-burning text-white"><i class='bx bx-group'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div></a>
+            </div>
+            <div class="col">
+                <a href="{{ route('active') }}">
+                    <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <p class="mb-0">@lang('site.Active Products')</p>
+                                <h4 class="font-weight-bold">
+                                </h4>
+                            </div>
+                            <div class="widgets-icons bg-gradient-lush text-white"><i class='bx bx-time'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div></a>
+            </div>
+            <div class="col">
+                <a href="{{ route('showAllPackages') }}">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <p class="mb-0">@lang('site.Document Packages')</p>
+                            </h4>
+                        </div>
+                            <div class="widgets-icons bg-gradient-kyoto text-white"><i class='bx bxs-cube'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div></a>
+            </div>
+            <div class="col">
+                <a href="{{ route('sentInvoices') }}">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <p class="mb-0">@lang('site.sent_documents')</p>
+                                <h4 class="font-weight-bold">
+                                </h4>
+                            </div>
+                            <div class="widgets-icons bg-gradient-blues text-white"><i class='bx bx-line-chart'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div></a>
+            </div>
+            <div class="col">
+                <a href="{{ route('receivedInvoices') }}">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <p class="mb-0">@lang('site.received_documents')</p>
+                                <h4 class="font-weight-bold">
+                                </h4>
+                            </div>
+                            <div class="widgets-icons bg-gradient-moonlit text-white"><i class='bx bx-bar-chart'></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div></a>
         </div>
-        <div class="col">
-            <div class="card radius-10">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <p class="mb-0 text-secondary">@lang('site.Active Products')</p>
-                            <h4 class="my-1">{{ $approved }}</h4>
-                         </div>
-                        <div class="widgets-icons bg-light-info text-info ms-auto"><i class="bx bx-check-square"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card radius-10">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <p class="mb-0 text-secondary">@lang('site.Pending Products')</p>
-                            <h4 class="my-1">{{ $pending }}</h4>
-                         </div>
-                        <div class="widgets-icons bg-light-danger text-danger ms-auto"><i class="bx bx-timer"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card radius-10">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <p class="mb-0 text-secondary">@lang('site.Rejected Products')</p>
-                            <h4 class="my-1">0</h4>
-                        </div>
-                        <div class="widgets-icons bg-light-warning text-warning ms-auto"><i class="bx bx-eraser"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-  </div>
-@endsection  --}}
+        <!--end row-->
+        <div class="row">
+            @endsection
 
 @push('js')
-<script src="{{ asset('main/plugins/vectormap/jquery-jvectormap-2.0.2.min.js')}}"></script>
-<script src="{{ asset('main/plugins/vectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
-<script src="{{ asset('main/plugins/highcharts/js/highcharts.js')}}"></script>
-<script src="{{ asset('main/plugins/highcharts/js/exporting.js')}}"></script>
-<script src="{{ asset('main/plugins/highcharts/js/variable-pie.js')}}"></script>
-<script src="{{ asset('main/plugins/highcharts/js/export-data.js')}}"></script>
-<script src="{{ asset('main/plugins/highcharts/js/accessibility.js')}}"></script>
-
+    <script src="{{ asset('main/plugins/simplebar/js/simplebar.min.js')}}"></script>
+    <script src="{{ asset('main/plugins/metismenu/js/metisMenu.min.js')}}"></script>
+    <script src="{{ asset('main/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
+    <script src="{{ asset('main/plugins/highcharts/js/highcharts.js')}}"></script>
+    <script src="{{ asset('main/plugins/highcharts/js/highcharts-more.js')}}"></script>
+    <script src="{{ asset('main/plugins/highcharts/js/variable-pie.js')}}"></script>
+    <script src="{{ asset('main/plugins/highcharts/js/solid-gauge.js')}}"></script>
+    <script src="{{ asset('main/plugins/highcharts/js/highcharts-3d.js')}}"></script>
+    <script src="{{ asset('main/plugins/highcharts/js/cylinder.js')}}"></script>
+    <script src="{{ asset('main/plugins/highcharts/js/funnel3d.js')}}"></script>
+    <script src="{{ asset('main/plugins/highcharts/js/exporting.js')}}"></script>
+    <script src="{{ asset('main/plugins/highcharts/js/export-data.js')}}"></script>
+    <script src="{{ asset('main/plugins/highcharts/js/accessibility.js')}}"></script>
+    <script src="{{ asset('main/js/index4.js')}}"></script>
+    <script src="{{ asset('main/js/app.js')}}"></script>
 @endpush
