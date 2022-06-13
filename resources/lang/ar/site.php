@@ -5,6 +5,8 @@ return [
     'dashboard' => 'لوحه التحكم',
     'products' => 'المنتجات',
     "productName" => 'product["codeNameSecondaryLang"]',
+    "logout"=>"تسجيل الخروج",
+    "profile"=>"الملف الشخصى",
 
     // Login Screen
 

@@ -1,2 +1,2 @@
-D:\laragon\www\Einvoice\EInvoicing\publish/EInvoicingSigner.exe  D:\laragon\www\Einvoice\EInvoicing 18712477 "Egypt Trust Sealing CA"
+C:/laragon/www/Preprod/EInvoicing/publish/EInvoicingSigner.exe  C:/laragon/www/Preprod/EInvoicing 98032202 "MCDR 2019"
 PAUSE

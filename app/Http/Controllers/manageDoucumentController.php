@@ -55,287 +55,242 @@ class manageDoucumentController extends Controller
         return view('invoices.receivedInvoices', compact('allInvoices', 'allMeta', 'taxId'));
     }
 
-// this function for create invoice
 
-    // public function invoice(Request $request)
-    // {
 
-    //     $invoice =
-    //         [
-    //         "issuer" => array(
-    //             "address" => array(
-    //                 "branchID" => "0",
-    //                 "country" => "EG",
-    //                 "governate" => auth()->user()->details->governate,
-    //                 "regionCity" => auth()->user()->details->regionCity,
-    //                 "street" => auth()->user()->details->street,
-    //                 "buildingNumber" => auth()->user()->details->buildingNumber,
-    //             ),
-    //             "type" => auth()->user()->details->issuerType,
-    //             "id" => auth()->user()->details->company_id,
-    //             "name" => auth()->user()->details->company_name,
-    //         ),
-    //         "receiver" => array(
-    //             "address" => array(
-    //                 "country" => $request->receiverCountry,
-    //                 "governate" => $request->receiverGovernate,
-    //                 "regionCity" => $request->receiverRegionCity,
-    //                 "street" => $request->street,
-    //                 "buildingNumber" => $request->receiverBuildingNumber,
-    //                 "postalCode" => $request->receiverPostalCode,
-    //                 "floor" => $request->receiverFloor,
-    //                 "room" => $request->receiverRoom,
-    //                 "landmark" => $request->receiverLandmark,
-    //                 "additionalInformation" => $request->receiverAdditionalInformation,
-    //             ),
-    //             "type" => $request->receiverType,
-    //             "id" => $request->receiverId,
-    //             "name" => $request->receiverName,
+    public function invoiceDollar(Request $request)
+    {
 
-    //         ),
-    //         "payment" => array(
-    //             "bankName" => $request->bankName,
-    //             "bankAddress" => $request->bankAddress,
-    //             "bankAccountNo" => $request->bankAccountNo,
-    //             "bankAccountIBAN" => $request->bankAccountIBAN,
-    //             "swiftCode" => $request->swiftCode,
-    //             "terms" => $request->Bankterms,
-    //         ),
-    //         "documentType" => $request->DocumentType,
-    //         "documentTypeVersion" => "0.9",
-    //         "dateTimeIssued" => $request->date . "T" . date("h:i:s") . "Z",
-    //         "taxpayerActivityCode" => $request->taxpayerActivityCode,
-    //         "internalID" => $request->internalId,
-    //         "invoiceLines" => [
 
-    //         ],
-    //         "totalDiscountAmount" => floatval($request->totalDiscountAmount),
-    //         "totalSalesAmount" => floatval($request->TotalSalesAmount),
-    //         "netAmount" => floatval($request->TotalNetAmount),
-    //         "taxTotals" => array(
-    //             array(
-    //                 "taxType" => "T4",
-    //                 "amount" => floatval($request->totalt4Amount),
-    //             ),
-    //             array(
-    //                 "taxType" => "T1",
-    //                 "amount" => floatval($request->totalt2Amount),
-    //             ),
-    //         ),
-    //         "totalAmount" => floatval($request->totalAmount2),
-    //         "extraDiscountAmount" => floatval($request->ExtraDiscount),
-    //         "totalItemsDiscountAmount" => floatval($request->totalItemsDiscountAmount),
-    //     ];
+        $validated = $request->validate([
+            // 'receiverCountry' => 'required',
+            // 'receiverCountry' => 'required',
+            // 'receiverGovernate' => 'required',
+            // 'receiverRegionCity' => 'required',
+            'receiverType' => 'required',
+            // 'receiverId' => 'required',
+            // 'receiverName' => 'required',
+            'DocumentType' => 'required',
+            'date' => 'required',
+            'taxpayerActivityCode' => 'required',
+            'internalId' => 'required',
+            'ExtraDiscount' => 'required',
+            'rate' => 'required',
+            'invoiceDescription' => 'required',
+            'itemCode' => 'required',
+            't4subtype' => 'required',
+            't1subtype' => 'required',
 
-    //     for ($i = 0; $i < count($request->quantity); $i++) {
-    //         $Data = [
-    //             "description" => $request->invoiceDescription[$i],
-    //             "itemType" => "EGS",
-    //             "itemCode" => $request->itemCode[$i],
-    //             // "itemCode" => "10003834",
-    //             "unitType" => "EA",
-    //             "quantity" => floatval($request->quantity[$i]),
-    //             "internalCode" => "100",
-    //             "salesTotal" => floatval($request->salesTotal[$i]),
-    //             "total" => floatval($request->totalItemsDiscount[$i]),
-    //             "valueDifference" => 0.00,
-    //             "totalTaxableFees" => 0.00,
-    //             "netTotal" => floatval($request->netTotal[$i]),
-    //             "itemsDiscount" => floatval($request->itemsDiscount[$i]),
+        ]);
 
-    //             "unitValue" => [
-    //                 "currencySold" => "EGP",
-    //                 "amountSold" => 0.00,
-    //                 "currencyExchangeRate" => 0.00,
-    //                 "amountEGP" => floatval($request->amountEGP[$i]),
-    //             ],
-    //             "discount" => [
-    //                 "rate" => 0.00,
-    //                 "amount" => floatval($request->discountAmount[$i]),
-    //             ],
-    //             "taxableItems" => [
-    //                 [
+        $invoice =
+            [
+            "issuer" => array(
+                "address" => array(
+                    "branchID" => "0",
+                    "country" => "EG",
+                    "governate" => auth()->user()->details->governate,
+                    "regionCity" => auth()->user()->details->regionCity,
+                    "street" => auth()->user()->details->street,
+                    "buildingNumber" => auth()->user()->details->buildingNumber,
+                ),
+                "type" => auth()->user()->details->issuerType,
+                "id" => auth()->user()->details->company_id,
+                "name" => auth()->user()->details->company_name,
+            ),
 
-    //                     "taxType" => "T4",
-    //                     "amount" => floatval($request->t4Amount[$i]),
-    //                     "subType" => ($request->t4subtype[$i]),
-    //                     "rate" => floatval($request->t4rate[$i]),
-    //                 ],
-    //                 [
-    //                     "taxType" => "T1",
-    //                     "amount" => floatval($request->t2Amount[$i]),
-    //                     "subType" => ($request->t1subtype[$i]),
-    //                     "rate" => floatval($request->rate[$i]),
-    //                 ],
-    //             ],
+            "receiver" => array(
+                "address" => array(
+                    "country" => $request->receiverCountry,
+                    "governate" => $request->receiverGovernate,
+                    "regionCity" => $request->receiverRegionCity,
+                    "street" => $request->street,
+                    "buildingNumber" => $request->receiverBuildingNumber,
+                    "postalCode" => $request->receiverPostalCode,
+                    "floor" => $request->receiverFloor,
+                    "room" => $request->receiverRoom,
+                    "landmark" => $request->receiverLandmark,
+                    "additionalInformation" => $request->receiverAdditionalInformation,
+                ),
+                "type" => $request->receiverType,
+                "id" => $request->receiverId,
+                "name" => $request->receiverName,
+            ),
+            "documentType" => $request->DocumentType,
+            "documentTypeVersion" => "0.9",
+            "dateTimeIssued" => $request->date . "T" . date("h:i:s") . "Z",
+            "taxpayerActivityCode" => $request->taxpayerActivityCode,
+            "internalID" => $request->internalId,
+            "invoiceLines" => [
 
-    //         ];
-    //         $invoice['invoiceLines'][$i] = $Data;
-    //     }
+            ],
+            "totalDiscountAmount" => floatval($request->totalDiscountAmount),
+            "totalSalesAmount" => floatval($request->TotalSalesAmount),
+            "netAmount" => floatval($request->TotalNetAmount),
+            "taxTotals" => array(
+                array(
+                    "taxType" => "T4",
+                    "amount" => floatval($request->totalt4Amount),
+                ),
+                array(
+                    "taxType" => "T1",
+                    "amount" => floatval($request->totalt2Amount),
+                ),
+            ),
+            "totalAmount" => floatval($request->totalAmount2),
+            "extraDiscountAmount" => floatval($request->ExtraDiscount),
+            "totalItemsDiscountAmount" => floatval($request->totalItemsDiscountAmount),
+        ];
 
-    //     $trnsformed = json_encode($invoice, JSON_UNESCAPED_UNICODE);
-    //     $myFileToJson = fopen("storage/EInvoicing/SourceDocumentJson.json", "w") or die("unable to open file");
-    //     fwrite($myFileToJson, $trnsformed);
-    //     return redirect()->route('cer');
+        for ($i = 0; $i < count($request->quantity); $i++) {
+            $Data = [
+                "description" => $request->invoiceDescription[$i],
+                "itemType" => "EGS",
+                "itemCode" => $request->itemCode[$i],
+                // "itemCode" => "10003834",
+                "unitType" => "EA",
+                "quantity" => floatval($request->quantity[$i]),
+                "internalCode" => "100",
+                "salesTotal" => floatval($request->salesTotal[$i]),
+                "total" => floatval($request->totalItemsDiscount[$i]),
+                "valueDifference" => 0.00,
+                "totalTaxableFees" => 0.00,
+                "netTotal" => floatval($request->netTotal[$i]),
+                "itemsDiscount" => floatval($request->itemsDiscount[$i]),
 
-    // }
+                "unitValue" => [
+                    "currencySold" => "USD",
+                    "amountSold" => floatval($request->amountSold[$i]),
+                    "currencyExchangeRate" => floatval($request->currencyExchangeRate[$i]),
+                    "amountEGP" => floatval($request->amountEGP[$i]),
+                ],
+                "discount" => [
+                    "rate" => 0.00,
+                    "amount" => floatval($request->discountAmount[$i]),
+                ],
+                "taxableItems" => [
+                    [
 
+                        "taxType" => "T4",
+                        "amount" => floatval($request->t4Amount[$i]),
+                        "subType" => ($request->t4subtype[$i]),
+                        "rate" => floatval($request->t4rate[$i]),
+                    ],
+                    [
+                        "taxType" => "T1",
+                        "amount" => floatval($request->t2Amount[$i]),
+                        "subType" => ($request->t1subtype[$i]),
+                        "rate" => floatval($request->rate[$i]),
+                    ],
+                ],
+
+            ];
+            $invoice['invoiceLines'][$i] = $Data;
+        }
+
+
+        // this is for reference debit or credit note
+        ($request->referencesInvoice ? $invoice['references'] = [$request->referencesInvoice] : "");
+        // End reference debit or credit note
+
+        // this is for Bank payment
+
+        ($request->bankName ? $invoice['payment']["bankName"] = $request->bankName : "");
+        ($request->bankAddress ? $invoice['payment']["bankAddress"] = $request->bankAddress : "");
+        ($request->bankAccountNo ? $invoice['payment']["bankAccountNo"] = $request->bankAccountNo : "");
+        ($request->bankAccountIBAN ? $invoice['payment']["bankAccountIBAN"] = $request->bankAccountIBAN : "");
+        ($request->swiftCode ? $invoice['payment']["swiftCode"] = $request->swiftCode : "");
+        ($request->Bankterms ? $invoice['payment']["terms"] = $request->Bankterms : "");
+        // End Bank payment
+
+        $trnsformed = json_encode($invoice, JSON_UNESCAPED_UNICODE);
+        $myFileToJson = fopen("C:\laragon\www\Preprod\EInvoicing\SourceDocumentJson.json", "w") or die("unable to open file");
+        fwrite($myFileToJson, $trnsformed);
+        return redirect()->route('cer');
+
+    }
     public function invoice(Request $request)
     {
 
-        // $invoice =
 
-        // '
-        //         {
-        //             "doucuments":[
-        //                 {
-        //                     "issuer":{
-        //                         "address":{
-        //                              "branchID" : ' . "0" . ',
-        //                              "country" : ' . "EG" . ',
-        //                              "governate" : ' . auth()->user()->details->governate . ',
-        //                              "regionCity" :' . auth()->user()->details->regionCity . ',
-        //                              "street" : ' . auth()->user()->details->street . '",
-        //                              "buildingNumber" : ' . auth()->user()->details->buildingNumber . ',
-        //                         },
-        //                              "type": ' . auth()->user()->details->issuerType . ',
-        //                              "id": ' . auth()->user()->details->company_id . ',
-        //                              "name": ' . auth()->user()->details->company_name . ',
-        //                     },
-        //                      "receiver": {
-        //                       "address": {
-        //                           "country": ' . $request->receiverCountry . ',
-        //                           "governate": ' . $request->receiverGovernate . ',
-        //                           "regionCity": ' . $request->receiverRegionCity . ',
-        //                           "street": ' . $request->street . ',
-        //                           "buildingNumber": ' . $request->receiverBuildingNumber . ',
-        //                           "postalCode": ' . $request->receiverPostalCode . ',
-        //                           "floor":' . $request->receiverFloor . ',
-        //                           "room": ' . $request->receiverRoom . ',
-        //                           "landmark": ' . $request->receiverLandmark . ',
-        //                           "additionalInformation": ' . $request->receiverAdditionalInformation . '
-        //                       },
-        //                       "type":  ' . $request->receiverType . ',
-        //                       "id": ' . $request->receiverId . ',
-        //                       "name": ' . $request->receiverName . ',
-        //                   },
-        //                    "documentType": ' . $request->DocumentType . ',
-        //                    "documentTypeVersion": "0.9",
-        //                    "dateTimeIssued": ' . $request->date . "T" . date("h:i:s") . "Z" . ',
-        //                    "taxpayerActivityCode": ' . $request->taxpayerActivityCode . ',
-        //                    "internalID": ' . $request->internalId . ',
-        //                    "payment": {
-        //                          "bankName": ' . $request->bankName . ',
-        //                          "bankAddress": ' . $request->bankAddress . ',
-        //                          "bankAccountNo": ' . $request->bankAccountNo . ',
-        //                          "bankAccountIBAN": ' . $request->bankAccountIBAN . ',
-        //                          "swiftCode": ' . $request->swiftCode . ',
-        //                          "terms": ' . $request->Bankterms . ',
-        //                     },
-        //                      "invoiceLines" => [
+        $validated = $request->validate([
+            // 'receiverCountry' => 'required',
+            // 'receiverCountry' => 'required',
+            // 'receiverGovernate' => 'required',
+            // 'receiverRegionCity' => 'required',
+            'receiverType' => 'required',
+            // 'receiverId' => 'required',
+            // 'receiverName' => 'required',
+            'DocumentType' => 'required',
+            'date' => 'required',
+            'taxpayerActivityCode' => 'required',
+            'internalId' => 'required',
+            'ExtraDiscount' => 'required',
+            'rate' => 'required',
+            'invoiceDescription' => 'required',
+            'itemCode' => 'required',
+            't4subtype' => 'required',
+            't1subtype' => 'required',
 
-        //                     ],
-        //                     "totalDiscountAmount" : ' . floatval($request->totalDiscountAmount) . ',
-        //                     "totalSalesAmount" : ' . floatval($request->TotalSalesAmount) . ',
-        //                     "netAmount" : ' . floatval($request->TotalNetAmount) . ',
-        //                      "taxTotals": [
-        //                             {
-        //                                 "taxType": "T4",
-        //                                 "amount": ' . floatval($request->totalt4Amount) . '
-        //                             }
-        //                             {
-        //                                 "taxType": "T1",
-        //                                 "amount": ' . floatval($request->totalt2Amount) . '
-        //                             }
-        //                       ],
-        //                        "totalAmount": ' . floatval($request->totalAmount2) . ',
-        //                        "extraDiscountAmount": ' . floatval($request->ExtraDiscount) . ',
-        //                        "totalItemsDiscountAmount": ' . floatval($request->totalItemsDiscountAmount) . ',
-        //                         "signatures": [
-        //                             {
-        //                                 "signatureType": "I",
-        //                                 "value":  ""
-        //                             }
-        //                         ]
-        //                 }
-
-        //             ]
-
-        //         }';
+        ]);
 
         $invoice =
-
             [
-            "documents" => [[
-                "issuer" => array(
-                    "address" => array(
-                        "branchID" => "0",
-                        "country" => "EG",
-                        "governate" => auth()->user()->details->governate,
-                        "regionCity" => auth()->user()->details->regionCity,
-                        "street" => auth()->user()->details->street,
-                        "buildingNumber" => auth()->user()->details->buildingNumber,
-                    ),
-                    "type" => auth()->user()->details->issuerType,
-                    "id" => auth()->user()->details->company_id,
-                    "name" => auth()->user()->details->company_name,
+            "issuer" => array(
+                "address" => array(
+                    "branchID" => "0",
+                    "country" => "EG",
+                    "governate" => auth()->user()->details->governate,
+                    "regionCity" => auth()->user()->details->regionCity,
+                    "street" => auth()->user()->details->street,
+                    "buildingNumber" => auth()->user()->details->buildingNumber,
                 ),
-                "receiver" => array(
-                    "address" => array(
-                        "country" => $request->receiverCountry,
-                        "governate" => $request->receiverGovernate,
-                        "regionCity" => $request->receiverRegionCity,
-                        "street" => $request->street,
-                        "buildingNumber" => $request->receiverBuildingNumber,
-                        "postalCode" => $request->receiverPostalCode,
-                        "floor" => $request->receiverFloor,
-                        "room" => $request->receiverRoom,
-                        "landmark" => $request->receiverLandmark,
-                        "additionalInformation" => $request->receiverAdditionalInformation,
-                    ),
-                    "type" => $request->receiverType,
-                    "id" => $request->receiverId,
-                    "name" => $request->receiverName,
+                "type" => auth()->user()->details->issuerType,
+                "id" => auth()->user()->details->company_id,
+                "name" => auth()->user()->details->company_name,
+            ),
 
+            "receiver" => array(
+                "address" => array(
+                    "country" => $request->receiverCountry,
+                    "governate" => $request->receiverGovernate,
+                    "regionCity" => $request->receiverRegionCity,
+                    "street" => $request->street,
+                    "buildingNumber" => $request->receiverBuildingNumber,
+                    "postalCode" => $request->receiverPostalCode,
+                    "floor" => $request->receiverFloor,
+                    "room" => $request->receiverRoom,
+                    "landmark" => $request->receiverLandmark,
+                    "additionalInformation" => $request->receiverAdditionalInformation,
                 ),
-                "payment" => array(
-                    "bankName" => $request->bankName,
-                    "bankAddress" => $request->bankAddress,
-                    "bankAccountNo" => $request->bankAccountNo,
-                    "bankAccountIBAN" => $request->bankAccountIBAN,
-                    "swiftCode" => $request->swiftCode,
-                    "terms" => $request->Bankterms,
-                ),
+                "type" => $request->receiverType,
+                "id" => $request->receiverId,
+                "name" => $request->receiverName,
+            ),
+            "documentType" => $request->DocumentType,
+            "documentTypeVersion" => "0.9",
+            "dateTimeIssued" => $request->date . "T" . date("h:i:s") . "Z",
+            "taxpayerActivityCode" => $request->taxpayerActivityCode,
+            "internalID" => $request->internalId,
+            "invoiceLines" => [
 
-                "documentType" => $request->DocumentType,
-                "documentTypeVersion" => "0.9",
-                "dateTimeIssued" => $request->date . "T" . date("h:i:s") . "Z",
-                "taxpayerActivityCode" => $request->taxpayerActivityCode,
-                "internalID" => $request->internalId,
-                "invoiceLines" => [
-
-                ],
-                "totalDiscountAmount" => floatval($request->totalDiscountAmount),
-                "totalSalesAmount" => floatval($request->TotalSalesAmount),
-                "netAmount" => floatval($request->TotalNetAmount),
-                "taxTotals" => array(
-                    array(
-                        "taxType" => "T4",
-                        "amount" => floatval($request->totalt4Amount),
-                    ),
-                    array(
-                        "taxType" => "T1",
-                        "amount" => floatval($request->totalt2Amount),
-                    ),
+            ],
+            "totalDiscountAmount" => floatval($request->totalDiscountAmount),
+            "totalSalesAmount" => floatval($request->TotalSalesAmount),
+            "netAmount" => floatval($request->TotalNetAmount),
+            "taxTotals" => array(
+                array(
+                    "taxType" => "T4",
+                    "amount" => floatval($request->totalt4Amount),
                 ),
-                "totalAmount" => floatval($request->totalAmount2),
-                "extraDiscountAmount" => floatval($request->ExtraDiscount),
-                "totalItemsDiscountAmount" => floatval($request->totalItemsDiscountAmount),
-                "signatures" => [[
-                    "signatureType" => "I",
-                    "value" => "ANY",
-                ]],
-            ]]];
+                array(
+                    "taxType" => "T1",
+                    "amount" => floatval($request->totalt2Amount),
+                ),
+            ),
+            "totalAmount" => floatval($request->totalAmount2),
+            "extraDiscountAmount" => floatval($request->ExtraDiscount),
+            "totalItemsDiscountAmount" => floatval($request->totalItemsDiscountAmount),
+        ];
 
         for ($i = 0; $i < count($request->quantity); $i++) {
             $Data = [
@@ -380,37 +335,28 @@ class manageDoucumentController extends Controller
                 ],
 
             ];
-            $invoice["documents"][0]['invoiceLines'][$i] = $Data;
+            $invoice['invoiceLines'][$i] = $Data;
         }
 
-        ($request->referencesInvoice ? $invoice["documents"][0]['references'] = [$request->referencesInvoice] : "");
 
+        // this is for reference debit or credit note
+        ($request->referencesInvoice ? $invoice['references'] = [$request->referencesInvoice] : "");
+        // End reference debit or credit note
 
+        // this is for Bank payment
 
-
+        ($request->bankName ? $invoice['payment']["bankName"] = $request->bankName : "");
+        ($request->bankAddress ? $invoice['payment']["bankAddress"] = $request->bankAddress : "");
+        ($request->bankAccountNo ? $invoice['payment']["bankAccountNo"] = $request->bankAccountNo : "");
+        ($request->bankAccountIBAN ? $invoice['payment']["bankAccountIBAN"] = $request->bankAccountIBAN : "");
+        ($request->swiftCode ? $invoice['payment']["swiftCode"] = $request->swiftCode : "");
+        ($request->Bankterms ? $invoice['payment']["terms"] = $request->Bankterms : "");
+        // End Bank payment
 
         $trnsformed = json_encode($invoice, JSON_UNESCAPED_UNICODE);
-
-        $response = Http::asForm()->post('https://id.preprod.eta.gov.eg/connect/token', [
-            'grant_type' => 'client_credentials',
-            'client_id' => auth()->user()->details->client_id,
-            'client_secret' => auth()->user()->details->client_secret,
-            'scope' => "InvoicingAPI",
-        ]);
-
-        $senInvoice = Http::withHeaders([
-            "Authorization" => 'Bearer ' . $response['access_token'],
-            "Content-Type" => "application/json",
-        ])->withBody($trnsformed, "application/json")->post('https://api.preprod.invoicing.eta.gov.eg/api/v1/documentsubmissions');
-
-        if ($senInvoice['submissionId'] == !null) {
-            return redirect()->route('sentInvoices')->with('success', 'تم تسجيل الفاتورة بنجاح ');
-            // return $senInvoice->body();
-
-        } else {
-            return $senInvoice->body();
-            // return redirect()->route('sentInvoices')->with('error', "يوجد خطأ فى الفاتورة من فضلك اعد تسجيلها");
-        }
+        $myFileToJson = fopen("C:\laragon\www\Preprod\EInvoicing\SourceDocumentJson.json", "w") or die("unable to open file");
+        fwrite($myFileToJson, $trnsformed);
+        return redirect()->route('cer');
 
     }
 
@@ -419,11 +365,11 @@ class manageDoucumentController extends Controller
     public function openBat()
     {
 
-        shell_exec('storage/EInvoicing/SubmitInvoices2.bat');
-        $path = "storage/EInvoicing/FullSignedDocument.json";
-        $path2 = "storage/EInvoicing/Cades.txt";
-        $path3 = "storage/EInvoicing/CanonicalString.txt";
-        $path4 = "storage/EInvoicing/SourceDocumentJson.json";
+        shell_exec('C:\laragon\www\Preprod\EInvoicing/SubmitInvoices2.bat');
+        $path = "C:\laragon\www\Preprod\EInvoicing/FullSignedDocument.json";
+        $path2 = "C:\laragon\www\Preprod\EInvoicing/Cades.txt";
+        $path3 = "C:\laragon\www\Preprod\EInvoicing/CanonicalString.txt";
+        $path4 = "C:\laragon\www\Preprod\EInvoicing/SourceDocumentJson.json";
 
         $fullSignedFile = file_get_contents($path);
 
@@ -505,6 +451,76 @@ class manageDoucumentController extends Controller
         $companiess = DB::table('companies2')->where('id', $request->receiverName)->get();
         return view('invoices.createInvoice2', compact('companiess', 'allCompanies', "codes", 'ActivityCodes', 'taxTypes', "products"));
     }
+
+
+
+
+
+
+
+
+    public function createInvoiceDollar()
+    {
+        $response = Http::asForm()->post('https://id.preprod.eta.gov.eg/connect/token', [
+            'grant_type' => 'client_credentials',
+            'client_id' => auth()->user()->details->client_id,
+            'client_secret' => auth()->user()->details->client_secret,
+            'scope' => "InvoicingAPI",
+        ]);
+
+        $product = Http::withHeaders([
+            "Authorization" => 'Bearer ' . $response['access_token'],
+            "Content-Type" => "application/json",
+        ])->get('https://api.preprod.invoicing.eta.gov.eg/api/v1.0/codetypes/requests/my?Active=true&Status=Approved&PS=1000');
+
+        $products = $product['result'];
+        $codes = DB::table('products')->where('status', 'Approved')->get();
+        $ActivityCodes = DB::table('activity_code')->get();
+        $allCompanies = DB::table('companies2')->get();
+        $taxTypes = DB::table('taxtypes')->get();
+        return view('invoices.createInvoice3', compact('allCompanies', 'codes', 'ActivityCodes', 'taxTypes', 'products'));
+    }
+
+    // this function for Fill  the customer information
+
+    public function createInvoiceDollar2(Request $request)
+    {
+
+        $response = Http::asForm()->post('https://id.preprod.eta.gov.eg/connect/token', [
+            'grant_type' => 'client_credentials',
+            'client_id' => auth()->user()->details->client_id,
+            'client_secret' => auth()->user()->details->client_secret,
+            'scope' => "InvoicingAPI",
+        ]);
+
+        $product = Http::withHeaders([
+            "Authorization" => 'Bearer ' . $response['access_token'],
+            "Content-Type" => "application/json",
+        ])->get('https://api.preprod.invoicing.eta.gov.eg/api/v1.0/codetypes/requests/my?Active=true&Status=Approved&PS=1000');
+
+        $products = $product['result'];
+        $codes = DB::table('products')->where('status', 'Approved')->get();
+        $ActivityCodes = DB::table('activity_code')->get();
+        $allCompanies = DB::table('companies2')->get();
+        $taxTypes = DB::table('taxtypes')->get();
+        $companiess = DB::table('companies2')->where('id', $request->receiverName)->get();
+        return view('invoices.createInvoice3', compact('companiess', 'allCompanies', "codes", 'ActivityCodes', 'taxTypes', "products"));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function createInvoice3()
     {

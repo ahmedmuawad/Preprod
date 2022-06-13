@@ -46,16 +46,16 @@
         <!--sidebar wrapper -->
         <div class="sidebar-wrapper" data-simplebar="true">
             <div class="sidebar-header">
-                 <div>
+                 {{--  <div>
                     <img src="{{ asset('images/' . $company->logo) }}" class="logo-icon" alt="logo icon">
-                </div>
+                </div>  --}}
 
 
                 <div>
                     @if (LaravelLocalization::getCurrentLocale() == 'en')
-                    <a href="{{ url('/') }}">  <h4 class="logo-text">{{ $company->name_en }}</h4></a>
+                    <a href="{{ url('/') }}">  <h4 class="logo-text">Varl International Preprod </h4></a>
                     @else
-                    <a href="{{ url('/') }}"><h4 class="logo-text">{{ $company->name_ar }}</h4></a>
+                    <a href="{{ url('/') }}"><h4 class="logo-text">فارل انترناشيونال تجريبي</h4></a>
                     @endif
 
                 </div>
@@ -119,7 +119,10 @@
                             <i class="bx bx-right-arrow-alt"></i>@lang('site.received_documents')</a>
                         </li>
                         <li> <a href="{{ route('createInvoice') }}">
-                            <i class="bx bx-right-arrow-alt"></i>@lang('site.add-document')</a>
+                            <i class="bx bx-right-arrow-alt"></i>اضافة وثيقة بالجنيه</a>
+                        </li>
+                        <li> <a href="{{ route('createInvoiceDollar') }}">
+                            <i class="bx bx-right-arrow-alt"></i>اضافة وثيقة بالدولار</a>
                         </li>
                     </ul>
                 </li>
@@ -175,9 +178,9 @@
                     <ul>
                         <li> <a href="{{ route('setting.index') }}"><i
                                     class="bx bx-right-arrow-alt"></i>@lang('site.apisetting')</a></li>
-                        <li> <a href="{{ route('company.index') }}"><i
+                         <li> <a href="{{ route('company.index') }}"><i
                                     class="bx bx-right-arrow-alt"></i>@lang('site.com_setting')</a></li>
-                        <li> <a href="{{ route('issure.index') }}"><i
+                         <li> <a href="{{ route('issure.index') }}"><i
                                     class="bx bx-right-arrow-alt"></i>@lang('site.issure_file')</a></li>
 
                     </ul>
@@ -211,7 +214,7 @@
                         <i class="fadeIn animated bx bx-wifi-off" style="font-size: 30px;color: #d71919;"></i>
                     </div> --}}
                     <div class="top-menu ms-auto">
-                        <ul class="navbar-nav align-items-center">
+                        {{--  <ul class="navbar-nav align-items-center">
 
                             <li class="nav-item dropdown dropdown-large">
                                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"
@@ -237,44 +240,9 @@
                                     </ul>
                                 </div>
                             </li>
-                            {{-- <li class="nav-item dropdown dropdown-large">
-                                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span
-                                        class="alert-count">7</span>
-                                    <i class='bx bx-bell'></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a href="javascript:;">
-                                        <div class="msg-header">
-                                            <p class="msg-header-title">الاشعارات</p>
-                                            <p class="msg-header-clear ms-auto"> تحديد الكل كمقروء</p>
-                                        </div>
-                                    </a>
-                                    <div class="header-notifications-list">
-                                        <a class="dropdown-item" href="javascript:;">
-                                            <div class="d-flex align-items-center">
-                                                <div class="notify bg-light-primary text-primary"><i
-                                                        class="bx bx-group"></i>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    @foreach ($notifications as $notification)
-                                                    <h6 class="msg-name">{{ $notification['receiverName'] }}<span
-                                                            class="msg-time float-end">{{ Carbon\Carbon::parse($notification['creationDateTime'])->format('d-m-Y') }}</h6>
-                                                    <p class="msg-info">{{ $notification['status'] }}</p>
 
-                                                    @endforeach
-                                                </div>
-                                            </div>
-                                        </a>
 
-                                    </div>
-                                    <a href="javascript:;">
-                                        <div class="text-center msg-footer">عرض كل الاشعارات</div>
-                                    </a>
-                                </div>
-                            </li> --}}
-
-                        </ul>
+                        </ul>  --}}
                     </div>
                     <div class="user-box dropdown">
                         <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
@@ -328,7 +296,7 @@
                 class='bx bxs-up-arrow-alt'></i></a>
         <!--End Back To Top Button-->
         <footer class="page-footer">
-            <p class="mb-0">Copyright © 2021. Developed By <a href="https://www.stop4web.com" target=".blank">Stop Group Team</a></p>
+            <p class="mb-0">Copyright © 2021. Developed By <a href="https://stop4web.com" target=".blank">Stop Group Team</a></p>
         </footer>
     </div>
     @if (session()->has('modal'))

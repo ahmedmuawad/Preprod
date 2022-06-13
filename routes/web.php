@@ -15,6 +15,7 @@ use App\Http\Controllers\ProductsController as products;
 use App\Http\Controllers\ProfileController as profile;
 use App\Http\Controllers\RemoteController as remote;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::group(
     [
@@ -106,11 +107,14 @@ Route::group(
             Route::get('receivedInvoices', [manageDoucumentController::class, 'receivedInvoices'])->name('receivedInvoices');
             Route::get('createInvoice', [manageDoucumentController::class, 'createInvoice'])->name('createInvoice');
             Route::get('createInvoice/create2', [manageDoucumentController::class, 'createInvoice2'])->name('createInvoice2');
+            Route::get('createInvoiceDollar', [manageDoucumentController::class, 'createInvoiceDollar'])->name('createInvoiceDollar');
+            Route::get('createInvoiceDollar2', [manageDoucumentController::class, 'createInvoiceDollar2'])->name('createInvoiceDollar2');
             Route::get('testInvoice', [manageDoucumentController::class, 'createInvoice3'])->name('createInvoice3');
             Route::get('testInvoice/test2', [manageDoucumentController::class, 'createInvoice4'])->name('createInvoice4');
 
 // send invoice
             Route::post('storeInvoice', [manageDoucumentController::class, 'invoice'])->name('storeInvoice');
+            Route::post('storeInvoiceDollar', [manageDoucumentController::class, 'invoiceDollar'])->name('storeInvoiceDollar');
 
 //signature
             Route::get('cer', [manageDoucumentController::class, 'openBat'])->name('cer');

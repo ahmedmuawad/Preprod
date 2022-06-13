@@ -457,13 +457,13 @@
                                                     <div class="col-md-6">
                                                         <label class="form-label">@lang("site.Bank Name")</label>
                                                         <input type="text" class="form-control form-control-sm text-center"
-                                                            name="bankName" placeholder="@lang("site.Bank Name")">
+                                                            name="bankName" placeholder="@lang("site.Bank Name")" value="Credit Agricole Egypt">
                                                     </div>
 
                                                     <div class="col-md-6">
                                                         <label class="form-label">@lang("site.Bank Address")</label>
                                                         <input type="text" class="form-control form-control-sm text-center"
-                                                            name="bankAddress" placeholder="@lang("site.Bank Address")">
+                                                            name="bankAddress" placeholder="@lang("site.Bank Address")" value="Cairo, Egypt">
                                                     </div>
 
                                                     <div class="row g-3">
@@ -471,14 +471,14 @@
                                                             <label class="form-label"> @lang("site.Bank Account No")</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-center"
-                                                                name="bankAccountNo" placeholder=" @lang("site.Bank Account No")">
+                                                                name="bankAccountNo" placeholder=" @lang("site.Bank Account No")" value="11018400008610">
                                                         </div>
 
                                                         <div class="col-md-6">
                                                             <label class="form-label"> @lang("site.Bank Account IBAN")</label>
                                                             <input type="text"
                                                                 class="form-control form-control-sm text-center"
-                                                                name="bankAccountIBAN" placeholder="@lang("site.Bank Account IBAN")">
+                                                                name="bankAccountIBAN" placeholder="@lang("site.Bank Account IBAN")" value="EG350036000100011018400008610">
 
                                                         </div>
                                                         <div class="row g-3">
@@ -486,7 +486,7 @@
                                                                 <label class="form-label"> @lang("site.Swift Code")</label>
                                                                 <input type="text"
                                                                     class="form-control form-control-sm text-center"
-                                                                    name="swiftCode" placeholder="@lang("site.Swift Code")">
+                                                                    name="swiftCode" placeholder="@lang("site.Swift Code")" value="AGRIEGCX">
                                                             </div>
 
                                                             <div class="col-md-6">
@@ -546,7 +546,7 @@
                                                 <div class="border border-3 p-4 rounded">
                                                     <div class="mb-3">
                                                         <label for="inputProductTitle" class="form-label">@lang("site.Line Item")</label>
-                                                        <select name="itemCode[]" id="itemCode" class="form-control form-select" placeholder="@lang("site.chooseItem")">
+                                                        <select name="itemCode[]" id="itemCode" class="form-control single-select" placeholder="@lang("site.chooseItem")">
                                                                 @foreach ($products as $product)
                                                                 <option value="{{ $product['itemCode'] }}"
                                                                     style="font-size: 20px">
@@ -582,7 +582,7 @@
                                                                 class="form-label">@lang("site.Tax added Type")</label>
 
                                                             <select name="t1subtype[]" required id="t1subtype"
-                                                                class="form-control form-control-sm form-select">
+                                                                class="form-control form-control-sm single-select">
                                                                 <option  selected value="V009"
                                                                     style="font-size: 15px;width: 100px;">@lang("site.without")
                                                                 </option>
@@ -610,7 +610,7 @@
                                                             <label for="inputProductTitle"
                                                                 class="form-label">@lang("site.Tax t4 Type")</label>
                                                             <select name="t4subtype[]" required id="t4subtype"
-                                                                class="form-control form-control-sm form-select">
+                                                                class="form-control form-control-sm single-select">
                                                                 <option value="W015" selected>@lang("site.without")</option>
                                                                 @foreach ($taxTypes as $type)
                                                                     @if ($type->parent === 'T4')
@@ -827,7 +827,7 @@
                                <div class="border border-3 p-4 rounded">
                                 <div class="mb-3">
                                     <label for="inputProductTitle" class="form-label">@lang("site.Line Item")</label>
-                                                        <select name="itemCode[]" id="itemCode" class="form-control form-select" placeholder="@lang("site.chooseItem")">
+                                                        <select name="itemCode[]" id="itemCode" class="form-control single-select" placeholder="@lang("site.chooseItem")">
                                                                 @foreach ($products as $product)
                                                                 <option value="{{ $product['itemCode'] }}"
                                                                     style="font-size: 20px">
@@ -857,7 +857,7 @@
                                 <div class=" row g-3">
                                     <div class="col-md-6">
                                         <label for="inputProductTitle" class="form-label">@lang("site.Tax added Type")</label>
-                                        <select name="t1subtype[]" required id="t1subtype" class="form-control form-control-sm form-select">
+                                        <select name="t1subtype[]" required id="t1subtype" class="form-control form-control-sm single-select">
                                               <option  selected value="V009" style="font-size: 15px;width: 100px;">
                                                 @lang("site.without")                                                                </option>
                                             @foreach ($taxTypes as $type)
@@ -877,7 +877,7 @@
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <label for="inputProductTitle" class="form-label">@lang("site.Tax t4 Type")</label>
-                                        <select name="t4subtype[]" required id="t4subtype" class="form-control form-control-sm form-select">
+                                        <select name="t4subtype[]" required id="t4subtype" class="form-control form-control-sm single-select">
                                              <option value="W015" selected>@lang("site.without")</option>
                                             @foreach ($taxTypes as $type)
                                                 @if ($type->parent === 'T4')
@@ -950,7 +950,7 @@
                             </div>
                             <hr>
                         </div> `
-                )
+                );$('.single-select').select2();
                 $('<script> function operation' + i +
                     '(value) {var x, y, z;  var quantity = document.getElementById("quantity' + i +
                     '").value; x = value * quantity; document.getElementById("salesTotal' + i +

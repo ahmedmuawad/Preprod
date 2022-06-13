@@ -85,7 +85,7 @@
                             <td> {{ ($invoice['uuid']) }}</td>
                             <td> {{ ($invoice['internalId']) }}</td>
                             {{-- <td> {{ $invoice['dateTimeIssued'] }}</td> --}}
-                            <td><a href="https://invoicing.eta.gov.eg/print/documents/{{ $invoice['uuid']}}/share/{{ $invoice['longId'] }} " target="_blank"
+                            <td><a href="https://preprod.invoicing.eta.gov.eg/print/documents/{{ $invoice['uuid']}}/share/{{ $invoice['longId'] }} " target="_blank"
                                     class="btn btn-success">@lang('site.viewinportal')</a>
                             </td>
                             <td><a href="{{ route('pdf',$invoice['uuid']) }}" class="btn btn-info" target="_blank"> @lang('site.download') </a></td>
